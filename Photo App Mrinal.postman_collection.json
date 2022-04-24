@@ -1,0 +1,363 @@
+{
+	"info": {
+		"_postman_id": "aaa25723-2802-46a2-b93c-bc2bcb52b5d9",
+		"name": "Photo App Mrinal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Posts - Authenticated",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI1YTM1ZTkyNDZhYWRlZTU2ZDMyNGNmIiwiZW1haWwiOiJtcmluYWxAbXJpbmFsbGFic3MzLmNvbSIsImlhdCI6MTY1MDc0MzYxMCwiZXhwIjoxNjUwNzUwODEwfQ.BHXWeMGdnZ_bdTHZIeCvwi2zQoaDlk-IE2FU1Q4O55w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "content",
+							"value": "some content testing",
+							"type": "text"
+						},
+						{
+							"key": "isPrivate",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "postPhoto",
+							"type": "file",
+							"src": "/Users/mrinalpurohit/Desktop/Screen Shot 2022-03-16 at 8.58.00 AM.png"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:4001/posts/",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"posts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login as a user (to get token)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI1YTE0NGFkYjE5NzJjNDdlODFiNTMyIiwiZW1haWwiOiJtcmluYWxAbXJpbmFsbGFicy5jb20iLCJpYXQiOjE2NTAwNzIyMzcsImV4cCI6MTY1MDA3OTQzN30.EQWaZXEy9zg8YmEt0Q9UelnTEwwZzvGN0IiAXEhiyvc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"mrinal@mrinallabss3.com\",\n    \"password\":\"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/user/login",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a post",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:4001/posts/62649e8278b4a7a126601fb5",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"posts",
+						"62649e8278b4a7a126601fb5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "content",
+							"value": "some content testing",
+							"type": "text"
+						},
+						{
+							"key": "isPrivate",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "postPhoto",
+							"type": "file",
+							"src": "/Users/mrinalpurohit/Desktop/Screen Shot 2022-03-16 at 8.58.00 AM.png"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:4001/posts/",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"posts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Posts - Unauthenticated",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "localhost:4001/posts/",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"posts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all MY posts - posts made by loggedin user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI1YTM1ZTkyNDZhYWRlZTU2ZDMyNGNmIiwiZW1haWwiOiJtcmluYWxAbXJpbmFsbGFic3MzLmNvbSIsImZpcnN0X25hbWUiOiJtcmluYWwiLCJsYXN0X25hbWUiOiJwdXJvaGl0IiwiaWF0IjoxNjUwODAxNzEyLCJleHAiOjE2NTA4MDg5MTJ9.S10ggpm2vcYnvQ7YtUOGq_DjpYBUsFd540v2rLYthAc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "localhost:4001/posts/",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"posts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add comment on a post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"commentText\": \"Some randome comment\",\n    \"postId\": \"62649e93b394a3af57a39241\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/comments",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get comments for a post",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/comments/62646f074440c7988f2c68cc",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"comments",
+						"62646f074440c7988f2c68cc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete single comment",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI1YTM1ZTkyNDZhYWRlZTU2ZDMyNGNmIiwiZW1haWwiOiJtcmluYWxAbXJpbmFsbGFic3MzLmNvbSIsImlhdCI6MTY1MDc0MzYxMCwiZXhwIjoxNjUwNzUwODEwfQ.BHXWeMGdnZ_bdTHZIeCvwi2zQoaDlk-IE2FU1Q4O55w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/comments/6264757a9e140f196f4ca174",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"comments",
+						"6264757a9e140f196f4ca174"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI1YTE0NGFkYjE5NzJjNDdlODFiNTMyIiwiZW1haWwiOiJtcmluYWxAbXJpbmFsbGFicy5jb20iLCJpYXQiOjE2NTAwNzIyMzcsImV4cCI6MTY1MDA3OTQzN30.EQWaZXEy9zg8YmEt0Q9UelnTEwwZzvGN0IiAXEhiyvc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"mrinal@at.com\",\n    \"password\":\"password\",\n    \"first_name\": \"Mrinal\",\n    \"last_name\": \"Purohit\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/user/register",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
